@@ -15,7 +15,8 @@
 % with this program; if not, write to the Free Software Foundation, Inc.,
 % 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 %
-\documentclass[oneside,openright,titlepage,numbers=noenddot,headinclude,footinclude=true,cleardoublepage=empty,listof=totoc,paper=a4,fontsize=11pt,american,BCOR=5mm]{scrreprt}
+\RequirePackage[english=usenglishmax]{hyphsubst}
+\documentclass[twoside,openright,titlepage,numbers=noenddot,headinclude,footinclude=true,cleardoublepage=empty,listof=totoc,paper=a4,fontsize=11pt,australian,twoside=semi,DIV=calc]{scrreprt} 
 
 % -----------------------------------------------------------------------------
 %   CONFIGURATION
@@ -55,15 +56,19 @@
 % -----------------------------------------------------------------------------
 
 \input{classicthesis-config}
+\usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=25mm, right=25mm,bindingoffset=6mm]{geometry} %This package resizes the margins to meet La Trobe's guidelines
+
+
 \addbibresource{library.bib}
 
 \begin{document}
   \frenchspacing
   \raggedbottom
-  \selectlanguage{american}
+  \selectlanguage{australian}
   
   \pagestyle{plain}
   \pagenumbering{roman}
+  
   
   \singlespacing
   \input{text/ch0-title}
@@ -83,6 +88,7 @@
   \input{text/ch0-acknowledgements}
   \input{text/ch0-publications}
   \input{text/ch0-dedication}
+    \input{text/ch0-abbreviations}
   
   \cleardoublepage
   \pagestyle{scrheadings}

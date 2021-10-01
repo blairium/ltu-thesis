@@ -30,7 +30,7 @@
 % 1. Configure classicthesis for your needs here, e.g., remove "drafting" below 
 % in order to deactivate the time-stamp on the pages
 % ****************************************************************************************************
-\PassOptionsToPackage{eulerchapternumbers,listings,pdfspacing,subfig,beramono,dottedtoc}{classicthesis}
+\PassOptionsToPackage{eulerchapternumbers,listings,pdfspacing,beramono,dottedtoc}{classicthesis}
 % ********************************************************************
 % Available options for classicthesis.sty 
 % (see ClassicThesis.pdf for more information):
@@ -58,6 +58,7 @@
 \newcommand{\Ie}{I.\,e.\ }
 \newcommand{\eg}{e.\,g.\ }
 \newcommand{\Eg}{E.\,g.\ }
+\newcommand{\fig}[1]{{Fig.~\ref{#1}}}
 % ****************************************************************************************************
 
 
@@ -67,7 +68,7 @@
 % ******************************************************************** 
 % Packages with options that might require adjustments
 % ******************************************************************** 
-\PassOptionsToPackage{american}{babel}
+\PassOptionsToPackage{australian}{babel}
   \usepackage{babel}
 
 \usepackage{csquotes}
@@ -75,20 +76,22 @@
   backend=bibtex,
   bibencoding=ascii,
   language=auto,
-  style=alphabetic,
-  sorting=nyt,
+  bibstyle=ieee,
+  citestyle=numeric-comp,
+  sorting=none,
   maxbibnames=10,
   natbib=true
 }{biblatex}
   \usepackage{biblatex}
 
-\PassOptionsToPackage{fleqn}{amsmath}       % math environments and more by the AMS 
+%\PassOptionsToPackage{fleqn}{amsmath}  %Align equations to the left     % math environments and more by the AMS 
   \usepackage{amsmath}
 
 % ******************************************************************** 
 % General useful packages
 % ******************************************************************** 
 \usepackage{amssymb}
+\usepackage{gensymb}
 \usepackage{lipsum}
 \PassOptionsToPackage{T1}{fontenc} % T2A for cyrillics
     \usepackage{fontenc}
@@ -102,6 +105,10 @@
   %\renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms --> no longer working
   %\renewcommand*{\acsfont}[1]{\textsc{#1}}
   \renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
+
+\usepackage{afterpage}
+\usepackage[version=4]{mhchem}
+
 % ****************************************************************************************************
 
 
@@ -115,15 +122,41 @@
 \usepackage{makecell}
 \usepackage{multirow}
 \usepackage{caption}
+\usepackage{subcaption}
+\usepackage{notoccite} %Removes citations from toc
+\usepackage{longtable}%
+
+\usepackage{comment}
+\usepackage{pdflscape}
+%\usepackage[dvipsname]{xcolor} %For printing 
+\usepackage[svgnames]{xcolor} %For PDF
+\usepackage{colortbl}%
+  \newcommand{\myrowcolour}{\rowcolor[gray]{0.925}}
+\usepackage{booktabs}
+
+\newcommand{\cheading}[2]{\textcolor{Maroon}{\textbf{#1\hfill #2}}}
+
+
 % Thanks to cgnieder and Claus Lahiri
 % http://tex.stackexchange.com/questions/69349/spacedlowsmallcaps-in-caption-label
 % [REMOVED DUE TO OTHER PROBLEMS, SEE ISSUE #82]    
 %\DeclareCaptionLabelFormat{smallcaps}{\bothIfFirst{#1}{~}\MakeTextLowercase{\textsc{#2}}}
 %\captionsetup{font=small,labelformat=smallcaps} % format=hang,
 \captionsetup{font=small} % format=hang,
-\usepackage{subfig}
+%\usepackage{subfig} %Possible Errors when using inconjunction with subcaption
+
+\newcommand*{\figureautorefname}{Fig.}
 % ****************************************************************************************************
 
+\usepackage{etoolbox}
+\makeatletter
+\newif\if@in@acrolist
+
+\AtBeginEnvironment{acronym}{\@in@acrolisttrue}
+\newrobustcmd{\LU}[2]{\if@in@acrolist#1\else#2\fi}
+
+\newcommand{\ACF}[1]{{\@in@acrolisttrue\acf{#1}}}
+\makeatother
 
 % ****************************************************************************************************
 % 5. Setup code listings
@@ -191,6 +224,12 @@
 \hypersetup{pdfkeywords={}}
 \hypersetup{pdfhighlight=/O}
 
+%********************************************************
+%Removes link color for printing by uncommenting, remember to change xcolor to cmyk for officeworks printing
+%********************************************************
+
+% \hypersetup{hidelinks} %Removes link colours?
+
 
 % ********************************************************************
 % Setup autoreferences
@@ -199,20 +238,21 @@
 % http://www.ureader.de/msg/136221647.aspx
 % http://www.tex.ac.uk/cgi-bin/texfaq2html?label=latexwords
 % you have to redefine the makros for the 
-% language you use, e.g., american, ngerman
+% language you use, e.g., australian, ngerman
 % (as chosen when loading babel/AtBeginDocument)
 % ********************************************************************
 \makeatletter
 \@ifpackageloaded{babel}%
 {%
-  \addto\extrasamerican{%
-    \renewcommand*{\figureautorefname}{Figure}%
+  \addto\extrasaustralian{%
+    \renewcommand*{\figureautorefname}{Fig.}%
+    \renewcommand*{\equationautorefname}{Eqn.}%
     \renewcommand*{\tableautorefname}{Table}%
     \renewcommand*{\partautorefname}{Part}%
     \renewcommand*{\chapterautorefname}{Chapter}%
-    \renewcommand*{\sectionautorefname}{Section}%
-    \renewcommand*{\subsectionautorefname}{Section}%
-    \renewcommand*{\subsubsectionautorefname}{Section}%
+    \renewcommand*{\sectionautorefname}{\S}%
+    \renewcommand*{\subsectionautorefname}{\S}%
+    \renewcommand*{\subsubsectionautorefname}{\S}%
   }%
   \addto\extrasngerman{%
     \renewcommand*{\paragraphautorefname}{Absatz}%
@@ -288,6 +328,11 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=newest}
+\usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}
+
+
+
+\sisetup{separate-uncertainty}
 
 \usepackage[shortcuts]{extdash}
 %\usepackage{epigraph}
@@ -322,4 +367,11 @@
 
 \newcommand{\hinttext}[1]{\textcolor{Gray!70!Red}{#1}}
 
-% ****************************************************************************************************
+
+
+
+
+\renewcommand{\topfraction}{.8}
+\renewcommand{\floatpagefraction}{.8}% %reduces the odd a float gets its own page unless it takes up 80% of space
+
+\hyphenation{Vertical}
