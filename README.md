@@ -1,6 +1,10 @@
 # *(Unofficial)* La Trobe PhD Thesis LaTeX Template
 
-Are you pursuing a PhD at La Trobe University? Are you looking for a LaTeX thesis template? I had the same problem. To my knowledge, GRS does not offer a LaTeX template yet. I started writing my thesis using the classicthesis thesis template by [André Miede](https://bitbucket.org/amiede/classicthesis). That worked well, but I had to customize and extend the template to comply with our formatting guidelines. And that is how we end up here. This is what I have finally come up with. Let's call it the *(unofficial)* La Trobe PhD Thesis Template. Feel free to use it!
+This is a slightly modified version of [Bashimao's](https://github.com/bashimao/ltu-thesis) La Trobe latex template based on the classicthesis thesis template by [André Miede](https://bitbucket.org/amiede/classicthesis).
+
+T've made slight changes so that the margins meet the requirements of the physics department. I've changed the language to Australian. I've also added an acronym page. 
+
+
 
 ## Organization
 `thesis.tex` is the root document and includes the individual chapters. The content of the chapters can be found under `text/`. It is pretty self-explaining. Figures should be placed under `figures/`. Bibliography should be put into `library.bib`.
@@ -41,11 +45,4 @@ You should replace the configuration at the top of `thesis.tex` with your actual
     \newcommand{\mySchool}{School of Engineering and Mathematical Sciences}
     \newcommand{\myUni}{La Trobe University}
 
-## Build commands:
 
-    pdflatex -synctex=1 -interaction=nonstopmode thesis.tex
-    bibtex thesis.aux
-    pdflatex -synctex=1 -interaction=nonstopmode thesis.tex
-    pdflatex -synctex=1 -interaction=nonstopmode thesis.tex
-
-(I am not kidding. You have to call the same command 3 times.)
