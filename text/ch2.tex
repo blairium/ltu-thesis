@@ -24,7 +24,80 @@ This examples comes from \href{https://mirror.aarnet.edu.au/pub/CTAN/macros/late
 
 In the early nineties, \acs{GSM} was deployed in many European countries. \ac{GSM} offered for the first time international roaming for mobile subscribers. The \acs{GSM}’s use of \ac{TDMA} as its communication standard was debated at length. And every now and then there are big discussion whether \ac{CDMA} should have been chosen over \ac{TDMA}.
 
+\autoref{c:Introduction}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics{figures/test.pdf}
+    \caption[Short caption]{Python test graphic}
+    \label{fig:test}
+\end{figure}
+
+\section{Chem Example}
+%https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/mhchem/mhchem.pdf
+This code
+\begin{lstlisting}
+    \ce{H2O} is water. \ce{2H2 + O2 -> 2H2O}
+
+\ce{Hg^2+ ->[I-] HgI2
+->[I-] [Hg^{II}I4]^2-}
+
+\begin{align}
+    \ce{2H2 + 2O &-> 2H2O}
+\end{align}
+
+\ce{Hg^2+ ->[I-] HgI2
+->[I-] [Hg^{II}I4]^2-}
+\end{lstlisting}
+
+produces this output. 
+\ce{H2O} is water. \ce{2H2 + O2 <-> 2H2O}
+
+\ce{Hg^2+ ->[I-] HgI2
+->[I-] [Hg^{II}I4]^2-}
+
+\begin{align}
+    \ce{2H2& + 2O &-> 2H2O} \\
+   \ce{2F2& + 2H &-> 2HFe2O}
+\end{align}
+
+\ce{Hg^2+ ->[I-] HgI2
+->[I-] [Hg^{II}I4]^2-}
+
+\section{Math Example}
+Math requires the use of a special environment, with between single \$'s for inline math like $2^2=4$, or between double \$\$'s for on it's own line like $$2^3=8$$ Math mode is also required to use the \href{https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/siunitx/siunitx.pdf}{siunitx} package to produce standardised units like $\SI{1.23}{\percent\per\milli\litre}$
+
+Code like this \cite{Herbert:1981:Children-of-Dune}
+
+
+
+\begin{lstlisting}
+    \begin{math}
+        2^3=8
+    \end{math}
+    
+    \begin{align}
+        27 &= 3^3 \\
+        &= 9 \times 9
+    \end{align}
+\end{lstlisting}
+Produces an output like this  $2+2=4 \lambda$
+    \begin{math}
+        2^3=8
+    \end{math}
+    
+    \begin{align}
+        27 &= 3^3 \\
+        &= 9 \times 9
+    \end{align}
+\section{Section A}\label{sec:section_a}
+\subsection{Subsection A}
+\subsubsection{Subsubsection A}
+    
+    
+    
 \section{Summary}
 \label{s:Background-Summary}
 
 The final section of each chapter should summarize the chapter. In comparison to the chapter, the summary should be short ($\frac{1}{2}$ to $2$ pages is normal).
+

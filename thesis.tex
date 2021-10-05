@@ -98,7 +98,7 @@
   \chapter{Introduction}\label{c:Introduction}
   \input{text/ch1}
   
-  \chapter{Background}\label{c:Background}
+  \chapter{Literature Review}\label{c:Background}
   \input{text/ch2}
   
   \chapter{Related Works}\label{c:Related-Works}
@@ -117,7 +117,16 @@
   \input{text/ch7}
   
   \cleardoublepage
+
+  \input{text/app-main} %Add appendices title to toc
   \appendix
+ \chapter{Appendix 1}\label{app:A}
+  \acresetall 
+  \input{text/app-a}
+  \acresetall 
+  \chapter{Appendix 2}\label{app:B}
+  \input{text/app-b}
+
   
   \singlespacing
   \input{text/app-bibliography}
