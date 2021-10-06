@@ -8,7 +8,7 @@ Most importantly, I've uploaded it to [Overleaf](https://www.overleaf.com/) as a
 
 
 ## Organization
-`thesis.tex` is the root document and includes the individual chapters. The content of the chapters can be found under `text/`. It is pretty self-explaining. Figures should be placed under `figures/`. Bibliography should be put into `library.bib`.
+`thesis.tex` is the root document and includes the individual chapters. The content of the chapters can be found under `text/`. It is pretty self-explanatory. Figures should be placed under `figures/`. Bibliography should be put into `library.bib`. If you have multiple and/or large tables I recommend creating a separate folder and individula files for them and importing them.
 
 ## Configuration
 You should replace the configuration at the top of `thesis.tex` with your actual information. That's it!
