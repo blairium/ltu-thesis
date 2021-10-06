@@ -1,0 +1,40 @@
+%This is a normal portrait table
+
+
+\begin{longtable}{@{}l *{2}{rr}}
+\caption[Portrait Table, short caption]{Portrait Table example:, long caption}
+\label{table:portrait_table}
+\\
+%   
+\toprule%
+
+
+ {\bfseries Sample} & {\bfseries Number } & {\bfseries Number}  
+\\
+
+
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-3}%
+\cmidrule[0.4pt](lr{0.125em}){4-5}%
+
+
+  \endfirsthead
+
+\endhead
+
+
+
+Sample & 1& 2
+\\
+
+\myrowcolour%
+Sample & 1 & 2
+\\
+Sample & 1 & 2
+\\
+
+
+\bottomrule
+
+\end{longtable}
