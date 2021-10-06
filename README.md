@@ -4,7 +4,7 @@ This is a slightly modified version of [Bashimao's](https://github.com/bashimao/
 
 I've made slight changes so that the margins meet the requirements of the physics department. I've changed the language to Australian. I've also added an acronym page and appendices.
 
-Most importantly, I've uploaded it to [Overleaf](https://www.overleaf.com/) as a [template](https://www.overleaf.com/latex/templates/unofficial-la-trobe-university-template/zqzzvmxvbxqg).
+Most importantly, I've uploaded it to [Overleaf](https://www.overleaf.com/) as a [template](https://www.overleaf.com/latex/templates/unofficial-la-trobe-university-template/zfbdwvyrxshz).
 
 
 ## Organization
