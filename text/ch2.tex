@@ -24,33 +24,40 @@ This examples comes from \href{https://mirror.aarnet.edu.au/pub/CTAN/macros/late
 
 In the early nineties, \acs{GSM} was deployed in many European countries. \ac{GSM} offered for the first time international roaming for mobile subscribers. The \acs{GSM}’s use of \ac{TDMA} as its communication standard was debated at length. And every now and then there are big discussion whether \ac{CDMA} should have been chosen over \ac{TDMA}.
 
-\autoref{c:Introduction}
+\section{Python Plotting Examples}
+
+The Jupyter notebook can be found in the folder 'Python plotting example' and contains code and advice for plotting publication quality figures for your thesis using python. View this notebook without installing python \href{https://nbviewer.jupyter.org/github/blairium/ltu-thesis/blob/97c95023caed8c8055ad905a8f68ad73061df8ad/Python_plotting_example/Plotting_Example.ipynb}{here}.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics{figures/test.pdf}
-    \caption[Short caption]{Python test graphic}
-    \label{fig:test}
+    \includegraphics{Python_plotting_example/example_1.pdf}
+    \caption[Python example plot 1]{Python example plot 1, a simple sine plot.}
+    \label{fig:ch2/example_1}
 \end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics{Python_plotting_example/example_2.pdf}
+    \caption[Python example plot 2]{Python example plot 2, a sine and cosine plot.}
+    \label{fig:ch2/example_2}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics{Python_plotting_example/example_3.pdf}
+    \caption[Python example plot 3]{Python example plot 3, a scatter plot of random data.}
+    \label{fig:ch2/example_4}
+\end{figure}
+\begin{figure}[h!]
+    \centering
+    \includegraphics{Python_plotting_example/example_4.pdf}
+    \caption[Python example plot 4]{Python example plot 4, an exponential plot showing how tex can be used within python.}
+    \label{fig:ch2/example_4}
+\end{figure}
+
+
 
 \section{Chem Example}
 %https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/mhchem/mhchem.pdf
-This code
-\begin{lstlisting}
-    \ce{H2O} is water. \ce{2H2 + O2 -> 2H2O}
 
-\ce{Hg^2+ ->[I-] HgI2
-->[I-] [Hg^{II}I4]^2-}
-
-\begin{align}
-    \ce{2H2 + 2O &-> 2H2O}
-\end{align}
-
-\ce{Hg^2+ ->[I-] HgI2
-->[I-] [Hg^{II}I4]^2-}
-\end{lstlisting}
-
-produces this output. 
 \ce{H2O} is water. \ce{2H2 + O2 <-> 2H2O}
 
 \ce{Hg^2+ ->[I-] HgI2
@@ -67,11 +74,7 @@ produces this output.
 \section{Math Example}
 Math requires the use of a special environment, with between single \$'s for inline math like $2^2=4$, or between double \$\$'s for on it's own line like $$2^3=8$$ Math mode is also required to use the \href{https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/siunitx/siunitx.pdf}{siunitx} package to produce standardised units like $\SI{1.23}{\percent\per\milli\litre}$
 
-Code like this \cite{Herbert:1981:Children-of-Dune}
 
-
-
-\begin{lstlisting}
     \begin{math}
         2^3=8
     \end{math}
@@ -80,22 +83,21 @@ Code like this \cite{Herbert:1981:Children-of-Dune}
         27 &= 3^3 \\
         &= 9 \times 9
     \end{align}
-\end{lstlisting}
-Produces an output like this  $2+2=4 \lambda$
-    \begin{math}
-        2^3=8
-    \end{math}
-    
-    \begin{align}
-        27 &= 3^3 \\
-        &= 9 \times 9
-    \end{align}
-\section{Section A}\label{sec:section_a}
-\subsection{Subsection A}
-\subsubsection{Subsubsection A}
+\section{Section Example}\label{sec:section_Example}
+\subsection{Subsection Example}
+\subsubsection{Subsubsection Example}
     
     
-    
+\section{Tables Examples}
+Unlike figures and the standard table environment, the longtable package will put tables wherever you put them, so you might have to play around with their location. Tables are without a doubt the most annoying aspect of \LaTeX. A helpful tool which can convert Excel tables to latex tables can be found \href{https://github.com/krlmlr/Excel2LaTeX}{here}.
+
+\newpage %This command forces the table to the next page
+\subsection{Portrait Table}
+\input{tables/portrait_table} %Here we input our table from a separate file to keep tings neat. As you can see, longtable will flow over pages so be careful where you put it or use the regular tabular environment
+% https://www.overleaf.com/learn/latex/Tables
+
+\subsection{Landscape Table}
+\input{tables/landscape_table}
 \section{Summary}
 \label{s:Background-Summary}
 
