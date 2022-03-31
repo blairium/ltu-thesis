@@ -17,10 +17,11 @@ Your potential audience is predominately academic and works on tangentially rela
 
 Are there people in your department that teach an elective or graduate-level subject that relates to your field of research? If yes, check how they structure their lecture! Tap into the knowledge of the more experienced people around you. Discuss with your supervisors or research coordinator what background information they regard as relevant. Sometimes, they may have a very clear idea.
 
-
+\section{Grammar Checking}
+While overleaf includes a spellcheck function, it doesn't include grammar checking. Installing a browser plugin such as \href{https://www.overleaf.com/blog/635-languagetool-a-free-browser-add-on-to-check-your-grammar-and-spelling}{language tools}
+ is the best way to overcome this. 
 \section{Acronym Example}\label{sec:acro_example}
 
-This examples comes from \href{https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/acronym/acronym.pdf}{here}
 
 In the early nineties, \acs{GSM} was deployed in many European countries. \ac{GSM} offered for the first time international roaming for mobile subscribers. The \acs{GSM}’s use of \ac{TDMA} as its communication standard was debated at length. And every now and then there are big discussion whether \ac{CDMA} should have been chosen over \ac{TDMA}.
 
@@ -28,7 +29,9 @@ In the early nineties, \acs{GSM} was deployed in many European countries. \ac{GS
 
 The Jupyter notebook can be found in the folder 'Python plotting example' and contains code and advice for plotting publication quality figures for your thesis using python. View this notebook without installing python \href{https://nbviewer.jupyter.org/github/blairium/ltu-thesis/blob/97c95023caed8c8055ad905a8f68ad73061df8ad/Python_plotting_example/Plotting_Example.ipynb}{here}.
 
-\begin{figure}[h!]
+
+
+\begin{figure}[H]
     \centering
     \includegraphics{Python_plotting_example/example_1.pdf}
     \caption[Python example plot 1]{Python example plot 1, a simple sine plot.}
@@ -44,7 +47,7 @@ The Jupyter notebook can be found in the folder 'Python plotting example' and co
     \centering
     \includegraphics{Python_plotting_example/example_3.pdf}
     \caption[Python example plot 3]{Python example plot 3, a scatter plot of random data.}
-    \label{fig:ch2/example_4}
+    \label{fig:ch2/example_3}
 \end{figure}
 \begin{figure}[h!]
     \centering
@@ -57,6 +60,8 @@ The Jupyter notebook can be found in the folder 'Python plotting example' and co
 
 \section{Chem Example}
 %https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/mhchem/mhchem.pdf
+
+\ce{H2O}
 
 \ce{H2O} is water. \ce{2H2 + O2 <-> 2H2O}
 
@@ -74,6 +79,7 @@ The Jupyter notebook can be found in the folder 'Python plotting example' and co
 \section{Math Example}
 Math requires the use of a special environment, with between single \$'s for inline math like $2^2=4$, or between double \$\$'s for on it's own line like $$2^3=8$$ Math mode is also required to use the \href{https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/siunitx/siunitx.pdf}{siunitx} package to produce standardised units like $\SI{1.23}{\percent\per\milli\litre}$
 
+$\SI{123}{\degree\per\pico\litre}$
 
     \begin{math}
         2^3=8
@@ -102,4 +108,6 @@ Unlike figures and the standard table environment, the longtable package will pu
 \label{s:Background-Summary}
 
 The final section of each chapter should summarize the chapter. In comparison to the chapter, the summary should be short ($\frac{1}{2}$ to $2$ pages is normal).
+
+Example beruwoeruioh \cite{HerbertF:1965:Dune} \citeauthor{HerbertB:2002:Butlerian-Jihad} \citeyear{HerbertB:2000:Harkonnen}
 

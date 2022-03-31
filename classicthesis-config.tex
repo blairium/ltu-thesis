@@ -76,8 +76,8 @@
   backend=bibtex,
   bibencoding=ascii,
   language=auto,
-  bibstyle=chem-acs, % 	chem-acs
-  citestyle=numeric-comp, % \textbf{}
+  bibstyle=ieee, % 	
+  citestyle=numeric-comp, % 
   sorting=none,
   maxbibnames=10,
   natbib=true
@@ -100,11 +100,12 @@
 \usepackage{xspace} % to get the spacing after macros right
 \usepackage{mparhack} % get marginpar right
 %\usepackage[latest]{latexrelease} % will be used once available in more distributions (ISSUE #107)
-\PassOptionsToPackage{printonlyused,smaller}{acronym}
-  \usepackage{acronym} % nice macros for handling all acronyms in the thesis
-  %\renewcommand{\bflabel}[1]{{#1}\hfill} % fix the list of acronyms --> no longer working
-  %\renewcommand*{\acsfont}[1]{\textsc{#1}}
-  \renewcommand*{\aclabelfont}[1]{\acsfont{#1}}
+\usepackage{acro,acro-examples,mfirstuc}
+\acsetup{ %Capitalise first letter when specified in text
+  make-links = true,
+  format/list=\ecapitalisewords
+} 
+\input{text/acronyms}
 
 \usepackage{afterpage}
 \usepackage[version=4]{mhchem}
@@ -150,12 +151,12 @@
 
 \usepackage{etoolbox}
 \makeatletter
-\newif\if@in@acrolist
+% \newif\if@in@acrolist
 
-\AtBeginEnvironment{acronym}{\@in@acrolisttrue}
-\newrobustcmd{\LU}[2]{\if@in@acrolist#1\else#2\fi}
+% \AtBeginEnvironment{acronym}{\@in@acrolisttrue}
+% \newrobustcmd{\LU}[2]{\if@in@acrolist#1\else#2\fi}
 
-\newcommand{\ACF}[1]{{\@in@acrolisttrue\acf{#1}}}
+% \newcommand{\ACF}[1]{{\@in@acrolisttrue\acf{#1}}}
 \makeatother
 
 % ****************************************************************************************************
