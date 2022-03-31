@@ -1,28 +1,28 @@
+%Please do not add acronyms to this page, add them to acronyms.text
+
+%This page is for the acronym hist heading and settings only
+
+% https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/acro/acro-manual.pdf 
+
+
+
+
+
+
+
+
+
 \chapter*{Acronyms}
 \addcontentsline{toc}{chapter}{Acronyms}
 
-% This page is where you enter your acronyms used
+\printacronyms[{ 
+    heading=none,
+    template = longtable,
+    display = used,
+    uppercase/all
+}] 
 
-% See this document for examples. https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/acronym/acronym.pdf
-% Alternately the acro pacgage can be used https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/acro/acro-manual.pdf can be used
 
-\begin{acronym}[TDMA]
-\acro{CDMA}{Code Division Multiple Access}
-\acro{GSM}{Global System for Mobile communication}
-\acro{NA}[\ensuremath{N_{\mathrm A}}]
-{Number of Avogadro\acroextra{ (see \S\ref{Chem})}}
-\acro{NAD+}[NAD\textsuperscript{+}]{Nicotinamide Adenine Dinucleotide}
-\acro{LFVP}{lepton flavor violating process}
-\acroindefinite{LFVP}{an}{a}
-\acro{NUA}{Not Used Acronym}
-\acro{TDMA}{Time Division Multiple Access}
-\acro{UA}{Used Acronym}
-\acro{lox}[\ensuremath{LOX}]{Liquid Oxygen}%
-\acro{lh2}[\ensuremath{LH_2}]{Liquid Hydrogen}%
-\acro{IC}{Integrated Circuit}%
-\acro{BUT}{Block Under Test}%
-\acrodefplural{BUT}{Blocks Under Test}%
-\acroindefinite{IC}{an}{an}
-\acro{h2o}[\ce{H2O}]{Water}
-\end{acronym}
+
+% https://mirror.aarnet.edu.au/pub/CTAN/macros/latex/contrib/acro/acro-manual.pdf 
 
