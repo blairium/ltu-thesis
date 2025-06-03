@@ -1,0 +1,43 @@
+name: Compile Working Version
+
+on:
+  push:
+  release:
+    types: [published]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current date
+        id: date
+        # run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo "date={$(date +'%Y-%m-%d')}" >> $GITHUB_ENV 
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Build current working thesis
+        uses: ./compiler-docker-action
+        with:
+          format: pdf
+          filename: thesis.tex
+
+          
+      - name: Rename file 
+        run: mv thesis.pdf thesis-${{ env.date }}.pdf
+        
+ 
+        
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-thesis
+          path: thesis-${{ env.date }}.pdf
+
+      - name: Upload to Release (Release Only)
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            Thesis.pdf
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}

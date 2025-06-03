@@ -1,0 +1,31 @@
+---
+name: 'Latexmk'
+description: 'Use the Latex in your Github Actions.'
+
+inputs:
+  format:
+    description: "File format to generate"
+    required: true
+    default: pdf
+
+  filename:
+    description: "Source file name"
+    required: false
+    default: main.tex
+
+  options:
+    description: "Latexmk options"
+    required: false
+    default: ""
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    ACTION_FORMAT: ${{ inputs.format }}
+    ACTION_FILENAME: ${{ inputs.filename }}
+    ACTION_OPTIONS: ${{ inputs.options }}
+
+branding:
+  icon: 'book'
+  color: 'gray-dark'

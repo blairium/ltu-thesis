@@ -6,6 +6,12 @@ I've made slight changes so that the margins meet the requirements of the physic
 
 Most importantly, I've uploaded it to [Overleaf](https://www.overleaf.com/) as a [template](https://www.overleaf.com/latex/templates/unofficial-la-trobe-university-template/zfbdwvyrxshz).
 
+## Thesistools
+The folder thesis tools includes a couple of useful python plotting tools for the Template
+
+## Git actions
+In the workflow folder there is a github action to automatically compile the thesis on push. It is a good idea to clone this repository and then inmport it to overleaf or your prefered editor.
+
 
 ## Organization
 `thesis.tex` is the root document and includes the individual chapters. The content of the chapters can be found under `text/`. It is pretty self-explanatory. Figures should be placed under `figures/`. Bibliography should be put into `library.bib`. If you have multiple and/or large tables I recommend creating a separate folder and individula files for them and importing them.
