@@ -57,7 +57,7 @@
 % -----------------------------------------------------------------------------
 
 \input{classicthesis-config}
-\usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=25mm, right=25mm,bindingoffset=6mm]{geometry} %This package resizes the margins to meet La Trobe's guidelines
+\usepackage[a4paper,top=25.4mm,bottom=25.4mm,left=38mm, right=19mm,bindingoffset=0mm]{geometry} %This package resizes the margins to meet La Trobe's guidelines https://policies.latrobe.edu.au/download.php?id=80&version=15&associated
 
 
 \addbibresource{library.bib}
@@ -70,7 +70,7 @@
   \pagestyle{plain}
   \pagenumbering{roman}
   
-  
+
   \singlespacing
   \input{text/ch0-title}
   \input{text/ch0-backside}
@@ -98,22 +98,22 @@
   
   \chapter{Introduction}\label{c:Introduction}
   \input{text/ch1}
-  
+  \acresetall 
   \chapter{Literature Review}\label{c:Background}
   \input{text/ch2}
-  
+  \acresetall 
   \chapter{Related Works}\label{c:Related-Works}
   \input{text/ch3}
-  
+  \acresetall 
   \chapter{Major Contribution 1}\label{c:Contribution-1}
   \input{text/ch4}
-  
+  \acresetall 
   \chapter{Major Contribution 2}\label{c:Contribution-2}
   \input{text/ch5}
-
+\acresetall 
   \chapter{Experiments}\label{c:Experiments}
   \input{text/ch6}
-  
+  \acresetall 
   \chapter{Conclusions}\label{c:Conclusions}
   \input{text/ch7}
   

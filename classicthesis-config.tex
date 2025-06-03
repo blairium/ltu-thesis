@@ -17,6 +17,12 @@
 % ****************************************************************************************************
 
 
+%Warning  message supression.
+\RequirePackage{silence}
+\WarningFilter{scrreprt}{Usage of package `titlesec'}
+\WarningFilter{tocloft}{tocloft bailing out}
+\WarningFilter{titlesec}{Non standard sectioning command}
+
 % ****************************************************************************************************
 % 0. Set the encoding of your files. UTF-8 is the only sensible encoding nowadays. If you can't read
 % äöüßáéçèê∂åëæƒÏ€ then change the encoding setting in your editor, not the line below. If your editor
@@ -30,7 +36,18 @@
 % 1. Configure classicthesis for your needs here, e.g., remove "drafting" below 
 % in order to deactivate the time-stamp on the pages
 % ****************************************************************************************************
-\PassOptionsToPackage{eulerchapternumbers,listings,pdfspacing,beramono,dottedtoc}{classicthesis}
+\PassOptionsToPackage{
+  drafting=true,    % print version information on the bottom of the pages
+  tocaligned=false, % the left column of the toc will be aligned (no indentation)
+  dottedtoc=true,  % page numbers in ToC flushed right
+  eulerchapternumbers=true, % use AMS Euler for chapter font (otherwise Palatino)
+  linedheaders=false,       % chaper headers will have line above and beneath
+  floatperchapter=true,     % numbering per chapter for all floats (i.e., Figure 1.1)
+  eulermath=false,  % use awesome Euler fonts for mathematical formulae (only with pdfLaTeX)
+  beramono=true,    % toggle a nice monospaced font (w/ bold)
+  palatino=true,    % deactivate standard font for loading another one, see the last section at the end of this file for suggestions
+  style=classicthesis % classicthesis, arsclassica
+}{classicthesis}
 % ********************************************************************
 % Available options for classicthesis.sty 
 % (see ClassicThesis.pdf for more information):
@@ -70,22 +87,42 @@
 % ******************************************************************** 
 \PassOptionsToPackage{australian}{babel}
   \usepackage{babel}
-
+\usepackage{lineno}
 \usepackage{csquotes}
 \PassOptionsToPackage{%
-  backend=bibtex,
-  bibencoding=ascii,
+  backend=biber,
+%   bibencoding=ascii,
   language=auto,
   bibstyle=ieee, % 	
   citestyle=numeric-comp, % 
   sorting=none,
-  maxbibnames=10,
-  natbib=true
+  url=false,
+  maxbibnames=10,backref=true,
+  backrefstyle=none,
+  citecounter=false, % count times each it cited
+  natbib=true,
+refsection=chapter
 }{biblatex}
-  \usepackage{biblatex}
+\usepackage{biblatex}
 
+
+% \PassOptionsToPackage{australian}{babel}
+%   \usepackage{babel}
+
+% \usepackage{csquotes}
+% \PassOptionsToPackage{%
+%   backend=bibtex,
+%   bibencoding=ascii,
+%   language=auto,
+%   bibstyle=chem-acs, % 	
+%   citestyle=chem-acs, % 
+%   sorting=none,
+%   maxbibnames=10,
+%   natbib=true
+% }{biblatex}
+%   \usepackage{biblatex}
 %\PassOptionsToPackage{fleqn}{amsmath}  %Align equations to the left     % math environments and more by the AMS 
-  \usepackage{amsmath}
+  \usepackage{amsmath,amsfonts}
 
 % ******************************************************************** 
 % General useful packages
@@ -100,16 +137,26 @@
 \usepackage{xspace} % to get the spacing after macros right
 \usepackage{mparhack} % get marginpar right
 %\usepackage[latest]{latexrelease} % will be used once available in more distributions (ISSUE #107)
-\usepackage{acro,acro-examples,mfirstuc}
+
+\usepackage{mfirstuc}
+\usepackage{acro}[=v2]
 \acsetup{ %Capitalise first letter when specified in text
   make-links = true,
-  format/list=\ecapitalisewords
+  format/list=\ecapitalisewords,
+  list / display = used,
+     list / heading=none,
+   list / template = longtable,
+   % patch/longtable=false,
 } 
 \input{text/acronyms}
 
-\usepackage{afterpage}
-\usepackage[version=4]{mhchem}
 
+\usepackage{afterpage}
+% \usepackage{chemmacros}
+% \NewChemReaction{multreaction}{multline}
+\usepackage[version=4]{mhchem}
+  \def\bflabel#1{{\acsfont{#1}\hfill}}
+  \def\aclabelfont#1{\acsfont{#1}}
 % ****************************************************************************************************
 
 
@@ -126,11 +173,12 @@
 \usepackage{subcaption}
 \usepackage{notoccite} %Removes citations from toc
 \usepackage{longtable}%
-
+\usepackage{tablefootnote}
 \usepackage{comment}
 \usepackage{pdflscape}
 %\usepackage[dvipsname]{xcolor} %For printing 
 \usepackage[svgnames]{xcolor} %For PDF
+\usepackage{svg}
 \usepackage{colortbl}%
   \newcommand{\myrowcolour}{\rowcolor[gray]{0.925}}
 \usepackage{booktabs}
@@ -225,6 +273,38 @@
 \hypersetup{pdfkeywords={}}
 \hypersetup{pdfhighlight=/O}
 
+
+\usepackage{cleveref}
+\usepackage{refcheck}
+\norefnames 
+
+\makeatletter
+\newcommand{\refcheckize}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[1]{%
+    \csname @@\string#1\endcsname{##1}\@for\@temp:=##1\do{\wrtusdrf{\@temp}\wrtusdrf{{\@temp}}}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+\newcommand{\refcheckizetwo}[1]{%
+  \expandafter\let\csname @@\string#1\endcsname#1%
+  \expandafter\DeclareRobustCommand\csname relax\string#1\endcsname[2]{%
+    \csname @@\string#1\endcsname{##1}{##2}\wrtusdrf{##1}\wrtusdrf{{##1}}\wrtusdrf{##2}\wrtusdrf{{##2}}}%
+  \expandafter\let\expandafter#1\csname relax\string#1\endcsname
+}
+\makeatother
+
+\refcheckize{\cref}
+\refcheckize{\Cref}
+\refcheckizetwo{\crefrange}
+\refcheckizetwo{\Crefrange}
+
+
+
+\crefname{section}{\S}{\S} 
+\Crefname{section}{\S}{\S}
+\Crefname{equation}{Eq.}{Eqs.}
+\Crefname{figure}{Fig.}{Figs.}
+\Crefname{tabular}{Tab.}{Tabs.}
 %********************************************************
 %Removes link color for printing by uncommenting, remember to change xcolor to cmyk for officeworks printing
 %********************************************************
@@ -330,9 +410,14 @@
 \usepackage{pgfplotstable}
 \pgfplotsset{compat=newest}
 \usepackage[separate-uncertainty = true,multi-part-units=single]{siunitx}
-
-
-
+\DeclareSIUnit\photon{\text{photon}}
+\DeclareSIUnit\photons{\text{photons}}
+\DeclareSIUnit\sccm{\text{sccm}}
+\DeclareSIUnit\torr{\text{Torr}}
+\DeclareSIUnit\rpm{\text{RPM}}
+\DeclareSIUnit\atoms{\text{atoms}}
+\DeclareSIUnit\ppm{\text{ppm}}
+\usepackage{threeparttable}
 \sisetup{separate-uncertainty}
 
 \usepackage[shortcuts]{extdash}
