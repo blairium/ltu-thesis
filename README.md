@@ -10,7 +10,7 @@ Most importantly, I've uploaded it to [Overleaf](https://www.overleaf.com/) as a
 The repository contains a [dev container](https://code.visualstudio.com/docs/devcontainers/tutorial) for editing the thesis in VSCode using using [xu-cheng's](https://github.com/xu-cheng/latex-docker/)  [full texline-alpine](https://github.com/users/xu-cheng/packages/container/package/texlive-alpine) with some other useful packages and tools like [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop)
 
 ## Git Action
-The .Github folder contains a git-action to build and release the thesis.
+The .Github folder contains a (git-action)[https://docs.github.com/en/actions] to build and release the thesis.
 
 ## Thesistools
 I've made a separate repository for python plotting tools [thesistools](https://github.com/blairium/thesistools). These can be installed by `pip install git+https://github.com/blairium/thesistools.git`
