@@ -1,0 +1,61 @@
+%This creates a landscape table, perfect for wide tables
+
+\afterpage{%
+    \clearpage% Flush earlier floats (otherwise order might not be correct)
+    \thispagestyle{empty}% empty page style (?)
+    \begin{landscape}% Landscape page
+
+\begin{longtable}{@{}l*{7}{ll}}
+\caption[Landscape table short caption]{Landscape table example: long caption}
+\label{table:/Chapter2/landscape}
+\\
+
+\toprule%
+
+
+{\bfseries Number } &  & {\bfseries Value 1 } &  &{\bfseries Value 2 } & & {\bfseries Value 3 } &  & {\bfseries Value 4 } & & {\bfseries Value 5 } & & {\bfseries Value 6 } &  &{\bfseries Value 7 } \\
+
+
+
+\cmidrule[0.4pt](r{0.125em}){1-1}%
+\cmidrule[0.4pt](lr{0.125em}){2-3}%
+\cmidrule[0.4pt](lr{0.125em}){4-5}%
+\cmidrule[0.4pt](lr{0.125em}){6-7}%
+\cmidrule[0.4pt](lr{0.125em}){8-9}%
+\cmidrule[0.4pt](lr{0.125em}){10-11}%
+\cmidrule[0.4pt](lr{0.125em}){12-13}%
+\cmidrule[0.4pt](lr{0.125em}){14-15}%
+
+
+  \endfirsthead
+
+\endhead
+
+
+
+1  & Value & $\SI{5}{\nano\m}$ & Value & $\SI{5}{\nano\m}$  &  Value  & $\SI{5}{\nano\m}$ 
+ & Value & $\SI{5}{\nano\m}$ & Value  & $\SI{5}{\nano\m}$ &   &  
+\\
+
+\myrowcolour%
+2  & Value &  $\SI{5}{\nano\m}$  & Value & $\SI{5}{\nano\m}$  &  Value & $\SI{5}{\nano\m}$  & Value &
+$\SI{5}{\nano\m}$  & Value & $\SI{5}{\nano\m}$   & Value & $\SI{5}{\nano\m}$  & Value & $\SI{5}{\nano\m}$
+\\
+
+
+3 & Value & $\SI{5}{\nano\m}$ & Value  & $\SI{5}{\nano\m}$  &  Value  & $\SI{5}{\nano\m}$ & Value &
+$\SI{5}{\nano\m}$  &  &   &   &  
+\\
+\myrowcolour%
+4  & Value &  $\SI{5}{\nano\m}$  & Value & $\SI{5}{\nano\m}$ &  Value & $\SI{5}{\nano\m}$  &
+  &   &  &   &    &   &  &   
+\\
+
+
+\bottomrule
+
+\end{longtable}
+
+\end{landscape}
+    \clearpage% Flush page
+}

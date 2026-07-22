@@ -21,8 +21,17 @@ In the workflow folder there is a github action to automatically compile the the
 ## Organization
 `thesis.tex` is the root document and includes the individual chapters. The content of the chapters can be found under `text/`. It is pretty self-explanatory. Figures should be placed under `figures/`. Bibliography should be put into `library.bib`. If you have multiple and/or large tables I recommend creating a separate folder and individula files for them and importing them.
 
+## Quick start with Copier
+Instead of editing `thesis.tex` by hand, you can scaffold a personalized copy of this template with [Copier](https://copier.readthedocs.io/). It will ask for your title, name, supervisors, department, etc. and fill in the configuration block for you. Copier can't target a subdirectory of a GitHub repo directly, so clone this repo first, then point Copier at the `copier-template` folder:
+
+    pip install copier
+    git clone https://github.com/blairium/ltu-thesis.git
+    copier copy ltu-thesis/copier-template my-thesis
+
+Run `copier update` inside `my-thesis` later to pull in template improvements. See [copier-template/](copier-template/) for the template source.
+
 ## Configuration
-You should replace the configuration at the top of `thesis.tex` with your actual information. That's it!
+Alternatively, you can replace the configuration at the top of `thesis.tex` with your actual information by hand. That's it!
 
     % Thesis and submission:
     \newcommand{\myTitle}{Using Thinking Machines to Alleviate our Dependency on Guild Navigators}

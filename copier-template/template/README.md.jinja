@@ -1,0 +1,34 @@
+# \VAR{project_title}
+
+A PhD thesis at \VAR{university}, built from the [(unofficial) La Trobe PhD Thesis LaTeX Template](https://github.com/blairium/ltu-thesis) and generated with [Copier](https://copier.readthedocs.io/).
+
+## Compiling
+
+Open this folder in Overleaf, TeXstudio, or the included [dev container](https://code.visualstudio.com/docs/devcontainers/tutorial) (VS Code + [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop)), then build `thesis.tex` with [arara](https://ctan.org/pkg/arara) (recipe defined in `.araraconfig.yaml`). A GitHub Action in `.github/workflows/Compile_Full.yml` will also compile and release a PDF on demand.
+
+## Organization
+
+`thesis.tex` is the root document and includes the individual chapters. Chapter content lives under `text/`. Figures go in `figures/`, references in `library.bib`. For multiple or large tables, keep them as separate files under `tables/` and `\input` them.
+
+## Configuration
+
+Your answers to the Copier questions were used to fill in the configuration block at the top of `thesis.tex`. If anything needs to change (title, supervisors, department, etc.), you have two options:
+
+* Edit the `\newcommand` block at the top of `thesis.tex` directly, or
+* Update your answers and re-run `copier update` from this project to regenerate it from the template.
+
+## Updating from the template
+
+This project was generated from the [ltu-thesis](https://github.com/blairium/ltu-thesis) Copier template. To pull in template improvements later:
+
+```
+copier update
+```
+
+## Plotting tools
+
+[thesistools](https://github.com/blairium/thesistools) is a separate package with helpers for publication-quality matplotlib figures. Install it with:
+
+```
+pip install git+https://github.com/blairium/thesistools.git
+```

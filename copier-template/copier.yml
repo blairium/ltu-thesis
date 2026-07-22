@@ -1,0 +1,228 @@
+_min_copier_version: "9.0.0"
+_subdirectory: template
+# Copier renders copier.yml itself and every template file with the same Jinja
+# environment. The default {{ }} / {% %} delimiters collide with LaTeX's own
+# curly braces (e.g. \newcommand{\myTitle}{...}), so the whole template -
+# including the validators below - uses the LaTeX-friendly delimiters instead.
+_envops:
+  block_start_string: "\\BLOCK{"
+  block_end_string: "}"
+  variable_start_string: "\\VAR{"
+  variable_end_string: "}"
+  comment_start_string: "\\#{"
+  comment_end_string: "}"
+  line_statement_prefix: "%%"
+  line_comment_prefix: "%#"
+  trim_blocks: true
+  autoescape: false
+
+_message_after_copy: |
+  Your thesis project has been generated.
+
+  Next steps:
+    1. Open the folder in Overleaf, TeXstudio, or the included devcontainer.
+    2. Compile `thesis.tex` with arara (see .araraconfig.yaml) to check everything builds.
+    3. Start replacing the placeholder text in `text/ch1.tex` .. `text/ch7.tex`.
+    4. Run `copier update` later to pull template improvements into this project.
+
+# -----------------------------------------------------------------------------
+# Thesis and submission
+# -----------------------------------------------------------------------------
+project_title:
+  type: str
+  help: The full title of the thesis (as it will appear on the title page).
+  default: Using Thinking Machines to Alleviate our Dependency on Guild Navigators
+  validator: >-
+    \BLOCK{ if not project_title.strip() }
+    A thesis needs a title.
+    \BLOCK{ endif }
+
+submission_year:
+  type: str
+  help: Year of submission.
+  default: "2026"
+  validator: >-
+    \BLOCK{ if not submission_year.strip() }
+    Submission year is required.
+    \BLOCK{ endif }
+
+submission_month:
+  type: str
+  help: Month of submission (e.g. October).
+  default: October
+  validator: >-
+    \BLOCK{ if not submission_month.strip() }
+    Submission month is required.
+    \BLOCK{ endif }
+
+submission_day:
+  type: str
+  help: Day of submission (e.g. 31).
+  default: "31"
+  validator: >-
+    \BLOCK{ if not submission_day.strip() }
+    Submission day is required.
+    \BLOCK{ endif }
+
+# -----------------------------------------------------------------------------
+# Regarding yourself
+# -----------------------------------------------------------------------------
+first_name:
+  type: str
+  help: Your first name.
+  default: Feyd-Rautha
+  validator: >-
+    \BLOCK{ if not first_name.strip() }
+    Your first name is required.
+    \BLOCK{ endif }
+
+last_name:
+  type: str
+  help: Your last (family) name.
+  default: Harkonnen
+  validator: >-
+    \BLOCK{ if not last_name.strip() }
+    Your last name is required.
+    \BLOCK{ endif }
+
+website:
+  type: str
+  help: Your personal or academic website (used in the colophon/links).
+  default: https://en.wikipedia.org/wiki/Feyd-Rautha
+
+birth_year:
+  type: str
+  help: Your birth year (needed for the statutory declaration of authorship page).
+  default: "1965"
+  validator: >-
+    \BLOCK{ if not birth_year.strip() }
+    Birth year is required.
+    \BLOCK{ endif }
+
+birth_month:
+  type: str
+  help: Your birth month.
+  default: January
+  validator: >-
+    \BLOCK{ if not birth_month.strip() }
+    Birth month is required.
+    \BLOCK{ endif }
+
+birth_day:
+  type: str
+  help: Your birth day.
+  default: "31"
+  validator: >-
+    \BLOCK{ if not birth_day.strip() }
+    Birth day is required.
+    \BLOCK{ endif }
+
+birth_place:
+  type: str
+  help: Your birth place.
+  default: Lankiveil
+  validator: >-
+    \BLOCK{ if not birth_place.strip() }
+    Birth place is required.
+    \BLOCK{ endif }
+
+# -----------------------------------------------------------------------------
+# Primary supervisor
+# -----------------------------------------------------------------------------
+supervisor_title:
+  type: str
+  help: "Primary supervisor's title (e.g. Prof., A/Prof., Dr)."
+  default: "Prof."
+
+supervisor_first_name:
+  type: str
+  help: Primary supervisor's first name.
+  default: Piter
+  validator: >-
+    \BLOCK{ if not supervisor_first_name.strip() }
+    Primary supervisor's first name is required.
+    \BLOCK{ endif }
+
+supervisor_last_name:
+  type: str
+  help: Primary supervisor's last name.
+  default: De Vries
+  validator: >-
+    \BLOCK{ if not supervisor_last_name.strip() }
+    Primary supervisor's last name is required.
+    \BLOCK{ endif }
+
+supervisor_website:
+  type: str
+  help: Primary supervisor's staff/website page.
+  default: http://homepage.cs.latrobe.edu.au/pdevries
+
+# -----------------------------------------------------------------------------
+# Co-supervisor
+# -----------------------------------------------------------------------------
+co_supervisor_title:
+  type: str
+  help: "Co-supervisor's title (e.g. Dr, Prof., A/Prof.)."
+  default: "Dr"
+
+co_supervisor_first_name:
+  type: str
+  help: Co-supervisor's first name.
+  default: Thufir
+  validator: >-
+    \BLOCK{ if not co_supervisor_first_name.strip() }
+    Co-supervisor's first name is required.
+    \BLOCK{ endif }
+
+co_supervisor_last_name:
+  type: str
+  help: Co-supervisor's last name.
+  default: Hawat
+  validator: >-
+    \BLOCK{ if not co_supervisor_last_name.strip() }
+    Co-supervisor's last name is required.
+    \BLOCK{ endif }
+
+co_supervisor_website:
+  type: str
+  help: Co-supervisor's staff/website page.
+  default: http://homepage.cs.latrobe.edu.au/hthufir
+
+# -----------------------------------------------------------------------------
+# University related
+# -----------------------------------------------------------------------------
+department:
+  type: str
+  help: Your department.
+  default: Department of Computer Science and Information Technology
+  validator: >-
+    \BLOCK{ if not department.strip() }
+    Department is required.
+    \BLOCK{ endif }
+
+faculty:
+  type: str
+  help: Your faculty/college.
+  default: College of Science, Health and Engineering
+  validator: >-
+    \BLOCK{ if not faculty.strip() }
+    Faculty is required.
+    \BLOCK{ endif }
+
+school:
+  type: str
+  help: Your school.
+  default: School of Engineering and Mathematical Sciences
+  validator: >-
+    \BLOCK{ if not school.strip() }
+    School is required.
+    \BLOCK{ endif }
+
+university:
+  type: str
+  help: Your university.
+  default: La Trobe University
+  validator: >-
+    \BLOCK{ if not university.strip() }
+    University is required.
+    \BLOCK{ endif }
