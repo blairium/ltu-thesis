@@ -1,0 +1,35 @@
+name: Test Copier Template
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "copier-template/**"
+      - ".github/workflows/Test_Copier_Template.yml"
+  pull_request:
+    paths:
+      - "copier-template/**"
+      - ".github/workflows/Test_Copier_Template.yml"
+
+jobs:
+  render-and-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v9.0.0
+
+      - name: Render template with defaults
+        run: uvx copier copy --defaults copier-template my-thesis-test
+
+      - name: Compile rendered thesis
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: thesis.tex
+          working_directory: my-thesis-test
+          compiler: arara
+          args: "--log"
+          texlive_version: 2024
