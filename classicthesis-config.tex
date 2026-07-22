@@ -139,15 +139,16 @@ refsection=chapter
 %\usepackage[latest]{latexrelease} % will be used once available in more distributions (ISSUE #107)
 
 \usepackage{mfirstuc}
-\usepackage{acro}[=v2]
+\usepackage{acro}
+\usepackage{supertabular,tabularray} %For acro package
 \acsetup{ %Capitalise first letter when specified in text
   make-links = true,
   format/list=\ecapitalisewords,
   list / display = used,
      list / heading=none,
-   list / template = longtable,
-   % patch/longtable=false,
-} 
+   list / template = supertabular,
+}
+
 \input{text/acronyms}
 
 
